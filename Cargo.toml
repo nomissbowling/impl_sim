@@ -1,0 +1,28 @@
+[package]
+name = "impl_sim"
+version = "0.1.0" # change with html_root_url in lib.rs
+edition = "2021"
+authors = ["nomissbowling <nomissbowling@yahoo.co.jp>"]
+
+description = "impl_sim for OYK ODE (Open Dynamics Engine)"
+keywords = ["oyk", "dynamics", "kinetics", "physics", "3D"]
+categories = ["simulation", "rendering"]
+license = "MIT"
+
+documentation = "https://docs.rs/impl_sim/"
+homepage = "https://crates.io/crates/impl_sim"
+repository = "https://github.com/nomissbowling/impl_sim"
+
+readme = "README.md"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+proc-macro = true
+
+name = "impl_sim"
+
+[dependencies]
+proc-macro2 = "1.0.56"
+quote = "1.0.26"
+syn = { version = "2.0.15", features = ["full", "extra-traits"] }
