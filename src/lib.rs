@@ -1,4 +1,4 @@
-#![doc(html_root_url = "https://docs.rs/impl_sim/0.1.0")]
+#![doc(html_root_url = "https://docs.rs/impl_sim/0.2.0")]
 //! impl_sim auto implement callback functions for trait Sim
 //!
 
@@ -21,6 +21,16 @@ pub fn impl_sim_fn(item: TokenStream) -> TokenStream {
   let f = &tk.unwrap();
   let s = &f.to_string();
   match s.as_str() {
+    "draw_geom" => {
+      quote! {
+        /// #f
+        fn #f(&self, geom: dGeomID,
+          pos: Option<*const dReal>, rot: Option<*const dReal>, ws: i32) {
+          ostatln!(concat!("called ", #s));
+          self.super_get().#f(geom, pos, rot, ws);
+        }
+      }
+    },
     "near_callback" => {
       quote! {
         /// #f
