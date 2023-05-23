@@ -1,4 +1,4 @@
-#![doc(html_root_url = "https://docs.rs/impl_sim/0.2.0")]
+#![doc(html_root_url = "https://docs.rs/impl_sim/0.3.0")]
 //! impl_sim auto implement callback functions for trait Sim
 //!
 
@@ -34,9 +34,9 @@ pub fn impl_sim_fn(item: TokenStream) -> TokenStream {
     "near_callback" => {
       quote! {
         /// #f
-        fn #f(&mut self, o1: dGeomID, o2: dGeomID) {
+        fn #f(&mut self, dat: *mut c_void, o1: dGeomID, o2: dGeomID) {
           ostatln!(concat!("called ", #s));
-          self.super_mut().#f(o1, o2);
+          self.super_mut().#f(dat, o1, o2);
         }
       }
     },
